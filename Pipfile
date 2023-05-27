@@ -21,6 +21,7 @@ wtforms = "*"
 flask-wtf = "*"
 flask-cors = "*"
 flask-login = "*"
+faker = "*"
 
 [dev-packages]
 
