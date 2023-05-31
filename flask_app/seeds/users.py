@@ -1,6 +1,6 @@
 """Users seed."""
 
-from models import db, User
+from flask_app.models import db, User
 from faker import Faker
 
 fake = Faker()

@@ -3,7 +3,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Length, ValidationError
-from models import User
+from flask_app.models import User
 
 def user_exists(form, field):
     """Check if user exists."""

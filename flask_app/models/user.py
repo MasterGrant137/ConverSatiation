@@ -1,12 +1,12 @@
 """User model."""
 
-import datetime
-from models import db
+from datetime import datetime
+from flask_app.models import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
-class User(db, UserMixin):
+class User(db.Model, UserMixin):
     """User model class.
 
     Since User is passed to flask_login at the login route,
