@@ -21,7 +21,6 @@ def password_matches(form, field):
 
 class LoginForm(FlaskForm):
     """Login form class."""
-
     email = StringField('email', validators=[DataRequired(message='Email is required!'), user_exists])
     password = PasswordField('password', validators=[Length(min=8, max=255,
         message='Passwords must be between 8 and 255 characters, inclusively.'),
