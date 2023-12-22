@@ -1,9 +1,9 @@
 """Auth routes."""
 
 from flask import Blueprint, request
-from flask_app.forms.login_form import LoginForm
-from flask_app.forms import LoginForm, SignupForm
-from flask_app.models import db, User
+from forms.login_form import LoginForm
+from forms import LoginForm, SignupForm
+from models import db, User
 from flask_login import current_user, login_user, logout_user
 
 auth_routes = Blueprint('auth', __name__)
@@ -22,7 +22,7 @@ def authenticateLogin():
     if current_user.is_authenticated:
         return current_user.to_dict()
     return { 'errors': ['Unauthorized'] }
-     
+
 @auth_routes.route('/signup')
 def authenticateSignup():
     """Authenticate user signup."""

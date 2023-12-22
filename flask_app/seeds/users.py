@@ -1,6 +1,6 @@
 """Users seed."""
 
-from flask_app.models import db, User
+from models import db, User
 from faker import Faker
 
 fake = Faker()
@@ -17,7 +17,7 @@ def seed_users():
 
 def undo_users():
     """Undo users seed.
-    
+
     `TRUNCATE` removes all the data from the table,
     `RESET IDENTITY` resets the auto incrementing primary key,
     `CASCADE` deletes any dependent entities.

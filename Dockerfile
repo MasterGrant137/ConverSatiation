@@ -1,10 +1,12 @@
 FROM python:3.11.7-alpine3.19
 
+WORKDIR /flask_app
+
 RUN --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    pip install -r requirements.txt
+    pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY /flask_app .
 
-EXPOSE 5000
+EXPOSE 8000
 
-CMD ["flask", "run"]
+CMD ["gunicorn", "-w", "2", "app:app"]

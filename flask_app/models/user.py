@@ -1,7 +1,7 @@
 """User model."""
 
 from datetime import datetime
-from flask_app.models import db
+from models import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -26,12 +26,12 @@ class User(db.Model, UserMixin):
     def password(self):
         """Password definition."""
         return self.hashed_password
-    
+
     @password.setter
     def password(self, password):
         """Hash and salt password."""
         self.hashed_password = generate_password_hash(password)
-    
+
     def check_password(self, password):
         """Check password against salted and hashed password."""
         return check_password_hash(self.password, password)
