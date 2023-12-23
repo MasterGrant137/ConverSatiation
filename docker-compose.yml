@@ -1,8 +1,8 @@
 services:
     backend:
       build: .
-      environment:
-          - SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI}
+      volumes:
+          - "./.env:/.env"
       ports:
           - "8000:8000"
       depends_on:
