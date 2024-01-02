@@ -2,7 +2,9 @@ services:
     backend:
       build: .
       volumes:
+          - "./flask_app:/flask_app"
           - "./.env:/.env"
+          - "./.flaskenv:/.flaskenv"
       ports:
           - "8000:8000"
       depends_on:
