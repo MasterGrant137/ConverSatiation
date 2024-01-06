@@ -17,7 +17,7 @@ const authContextDefaultValues = {
 
 export const AuthContext = createContext<AuthContextI>(authContextDefaultValues);
 
-export function AuthContextProvider({ children }: {
+export default function AuthContextProvider({ children }: {
   children: React.ReactNode
 }): JSX.Element {
   const [user, setUser] = useState<UserI | null>(null);

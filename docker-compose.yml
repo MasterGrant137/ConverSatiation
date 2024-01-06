@@ -2,16 +2,29 @@ services:
     backend:
       build: .
       volumes:
-          - "./flask_app:/flask_app"
-          - "./.env:/.env"
-          - "./.flaskenv:/.flaskenv"
+        - "./flask_app:/flask_app"
+        - "./.env:/.env"
+        - "./.flaskenv:/.flaskenv"
       ports:
-          - "8000:8000"
+        - "8000:8000"
       depends_on:
-          - db
+        - db
     db:
       image: postgres:16.1-alpine3.19
       environment:
-          - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       ports:
-          - "5432:5432"
+        - "5432:5432"
+    frontend:
+      build: 
+        context: .
+        dockerfile: frontend.Dockerfile
+      volumes:
+        - "./react-app/src:/react-app/src"
+        - "./react-app/public:/react-app/public"
+        - "./react-app/package.json:/react-app/package.json"
+        - "./react-app/next.config.js:/react-app/next.config.js"
+      ports:
+        - "3000:3000"
+      depends_on:
+        - backend
