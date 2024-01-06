@@ -3,7 +3,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Length, ValidationError
-from flask_app.models import User
+from models import User
 import re
 
 def email_exists(form, field):
@@ -20,7 +20,7 @@ def username_exists(form, field):
 
 def proper_password(form, field):
     """Check if password meets character and length requirements.
-    
+
     Runs the user input against regex to see if it has an uppercase
     letter, lowercase letter, symbol, and number. It also determine
     if the length specification (8 characters) is met.

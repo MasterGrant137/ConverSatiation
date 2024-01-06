@@ -6,13 +6,13 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import generate_csrf
 from flask_login import LoginManager
-from .routes.auth_routes import auth_routes
+from routes.auth_routes import auth_routes
 
-from .models import db, User
+from models import db, User
 
-from .seeds import seed_commands
+from seeds import seed_commands
 
-from .config import Config
+from config import Config
 
 app = Flask(__name__)
 
@@ -26,7 +26,7 @@ def load_user(id):
 
 app.cli.add_command(seed_commands)
 
-app.config.from_object(Config)
+app.config.from_object(Config())
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 db.init_app(app)
@@ -42,7 +42,7 @@ def https_redirect():
                  url = request.url.replace('http://', 'https//:', 1)
                  moved_permanently_status_code = 301
                  return redirect(url, code=moved_permanently_status_code)
-            
+
 @app.after_request
 def inject_csrf_token(response):
     """Set cross-site request forgery (CSRF) token.

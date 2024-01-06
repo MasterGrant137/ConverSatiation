@@ -1,0 +1,5 @@
+# Back end
+**/__pycache__
+
+# Front end
+**/node_modules
